@@ -1,13 +1,19 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 def Add_OtherItem():
     ItemOther = CustomItem()
     ItemOther.SetupItem(OthersCommandsWidget)
 
+
 def ReadText_fn():
-    for index in range(0,OthersCommandsWidget.count()):
-        TargetItem = OthersCommandsWidget.itemWidget(OthersCommandsWidget.item(index)).children()[1].text()
+    for index in range(0, OthersCommandsWidget.count()):
+        TargetItem = (
+            OthersCommandsWidget.itemWidget(OthersCommandsWidget.item(index))
+            .children()[1]
+            .text()
+        )
         print(TargetItem)
 
     def delete(self):
@@ -16,18 +22,18 @@ def ReadText_fn():
         lp = self.others_commands_widget.viewport().mapFromGlobal(gp)
         row = self.others_commands_widget.row(self.others_commands_widget.itemAt(lp))
         t_it = self.others_commands_widget.takeItem(row)
-        shost = self.text() 
-        f = open ('история.txt','a')
-        f.write(shost + '\n' + time + ' пункт выполнен.' + '\n')
+        shost = self.text()
+        f = open("история.txt", "a")
+        f.write(shost + "\n" + time + " пункт выполнен." + "\n")
         f.close()
         del t_it
 
+
 app = QtWidgets.QApplication(sys.argv)
 
+
 class CustomItem(object):
-
     def SetupItem(self, OthersCommandList):
-
         self.Item = QtWidgets.QListWidgetItem()
         self.Item.setStatusTip("TItem")
 
@@ -35,9 +41,8 @@ class CustomItem(object):
 
         self.CommandLine = QtWidgets.QLineEdit("d")
 
-        self.DeleteButton = QtWidgets.QPushButton('x')
+        self.DeleteButton = QtWidgets.QPushButton("x")
         self.DeleteButton.setFixedSize(22, 22)
-
 
         self.ItemLayoutBox = QtWidgets.QHBoxLayout()
 
@@ -51,6 +56,7 @@ class CustomItem(object):
         OthersCommandList.addItem(self.Item)
         OthersCommandList.setItemWidget(self.Item, self.MainWidget)
 
+
 AppWindow = QtWidgets.QMainWindow()
 AppWindow.setWindowTitle("PoC ListWidget")
 AppWindow.setFixedSize(550, 550)
@@ -59,7 +65,7 @@ TabWindow = QtWidgets.QTabWidget(AppWindow)
 TabWindow.setGeometry(8, 10, 535, 505)
 
 WorkTAB = QtWidgets.QWidget()
-TabWindow.addTab(WorkTAB, 'Tab.01')
+TabWindow.addTab(WorkTAB, "Tab.01")
 
 OthersCommandsWidget = QtWidgets.QListWidget(WorkTAB)
 OthersCommandsWidget.setGeometry(QtCore.QRect(8, 40, 515, 430))

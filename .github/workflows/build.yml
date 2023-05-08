@@ -9,7 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Check codestyle
+      - name: Install dependencies
         run: |
-          git ls-files | grep '\.py$' | xargs black --check --verbose
-          git diff --exit-code
+        python -m pip install --upgrade pip
+        pip install black
+
+      - name: Check codestyle
+        run: git ls-files *.{py} | xargs black --verbose && git diff --exit-code

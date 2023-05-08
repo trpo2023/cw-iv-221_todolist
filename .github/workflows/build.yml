@@ -15,4 +15,5 @@ jobs:
           pip install black
 
       - name: Check codestyle
-        run: git ls-files *.{py} | xargs black --verbose && git diff --exit-code
+        run: black . --check --diff
+

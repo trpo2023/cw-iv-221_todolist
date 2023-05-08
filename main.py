@@ -39,7 +39,7 @@ class CustomItem(object):
 
         self.MainWidget = QtWidgets.QWidget()
 
-        self.CommandLine = QtWidgets.QLineEdit("d")
+        self.CommandLine = QtWidgets.QLineEdit("")
 
         self.DeleteButton = QtWidgets.QPushButton("x")
         self.DeleteButton.setFixedSize(22, 22)

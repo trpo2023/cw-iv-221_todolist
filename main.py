@@ -29,7 +29,7 @@ def ReadText_fn():
         del t_it
 
 
-app = QtWidgets.QApplication(sys.argv) 
+app = QtWidgets.QApplication(sys.argv)
 
 
 class CustomItem(object):
@@ -57,7 +57,7 @@ class CustomItem(object):
         OthersCommandList.setItemWidget(self.Item, self.MainWidget)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     AppWindow = QtWidgets.QMainWindow()
     AppWindow.setWindowTitle("PoC ListWidget")
     AppWindow.setFixedSize(550, 550)

@@ -29,7 +29,7 @@ def ReadText_fn():
         del t_it
 
 
-app = QtWidgets.QApplication(sys.argv)
+app = QtWidgets.QApplication(sys.argv) 
 
 
 class CustomItem(object):
@@ -57,26 +57,26 @@ class CustomItem(object):
         OthersCommandList.setItemWidget(self.Item, self.MainWidget)
 
 
-AppWindow = QtWidgets.QMainWindow()
-AppWindow.setWindowTitle("PoC ListWidget")
-AppWindow.setFixedSize(550, 550)
+if __name__ == '__main__':
+    AppWindow = QtWidgets.QMainWindow()
+    AppWindow.setWindowTitle("PoC ListWidget")
+    AppWindow.setFixedSize(550, 550)
 
-TabWindow = QtWidgets.QTabWidget(AppWindow)
-TabWindow.setGeometry(8, 10, 535, 505)
+    TabWindow = QtWidgets.QTabWidget(AppWindow)
+    TabWindow.setGeometry(8, 10, 535, 505)
 
-WorkTAB = QtWidgets.QWidget()
-TabWindow.addTab(WorkTAB, "Tab.01")
+    WorkTAB = QtWidgets.QWidget()
+    TabWindow.addTab(WorkTAB, "Tab.01")
 
-OthersCommandsWidget = QtWidgets.QListWidget(WorkTAB)
-OthersCommandsWidget.setGeometry(QtCore.QRect(8, 40, 515, 430))
+    OthersCommandsWidget = QtWidgets.QListWidget(WorkTAB)
+    OthersCommandsWidget.setGeometry(QtCore.QRect(8, 40, 515, 430))
 
-AddButton = QtWidgets.QPushButton(WorkTAB)
-AddButton.setText("Add Item")
-AddButton.setGeometry(QtCore.QRect(8, 8, 0, 0))
-AddButton.setFixedSize(70, 22)
+    AddButton = QtWidgets.QPushButton(WorkTAB)
+    AddButton.setText("Add Item")
+    AddButton.setGeometry(QtCore.QRect(8, 8, 0, 0))
+    AddButton.setFixedSize(70, 22)
 
-AddButton.clicked.connect(Add_OtherItem)
+    AddButton.clicked.connect(Add_OtherItem)
 
-
-AppWindow.show()
-sys.exit(app.exec_())
+    AppWindow.show()
+    sys.exit(app.exec_())

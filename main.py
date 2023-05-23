@@ -1,7 +1,7 @@
 import sys
 import sys
 from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtWidgets import (QPushButton, QLineEdit)
+from PyQt5.QtWidgets import QPushButton, QLineEdit
 from datetime import datetime
 import telebot
 
@@ -12,7 +12,8 @@ try:
     file = open("ID.txt")
     telegram_id = file.read().replace("\n", " ")
     file.close()
-except: telegram_id = 0
+except:
+    telegram_id = 0
 
 try:
     UsrInfo = str((bot.get_chat_member(telegram_id, telegram_id).user))
@@ -22,22 +23,24 @@ try:
 except:
     UsrInfo = "Введите Telegram ID"
 
-TOKEN = '1783146665:AAEKE0MoajwKlWVOp8gKTzZiJ-KUOKJXpC8'
+TOKEN = "1783146665:AAEKE0MoajwKlWVOp8gKTzZiJ-KUOKJXpC8"
 bot = telebot.TeleBot(TOKEN)
 
 try:
     file = open("ID.txt")
     telegram_id = file.read().replace("\n", " ")
     file.close()
-except: telegram_id = 0
+except:
+    telegram_id = 0
 
 try:
     UsrInfo = str((bot.get_chat_member(telegram_id, telegram_id).user))
-    UsrInfo = UsrInfo[UsrInfo.find('username') + 12 :]
+    UsrInfo = UsrInfo[UsrInfo.find("username") + 12 :]
     UsrInfo = UsrInfo.partition("'")[0]
-    UsrInfo = 'Привет, ' + UsrInfo + '!'
+    UsrInfo = "Привет, " + UsrInfo + "!"
 except:
-    UsrInfo = 'Введите Telegram ID'
+    UsrInfo = "Введите Telegram ID"
+
 
 class Widget(QtWidgets.QWidget):
     clicked = QtCore.pyqtSignal()
@@ -46,7 +49,7 @@ class Widget(QtWidgets.QWidget):
 
     def __init__(self, parent=None):
         super(Widget, self).__init__(parent)
-        self.le = QLineEdit()   
+        self.le = QLineEdit()
         self.delete_button = QPushButton("✓")
         self.delete_butto = QPushButton("X")
         hlay = QtWidgets.QHBoxLayout(self)
@@ -54,7 +57,8 @@ class Widget(QtWidgets.QWidget):
         hlay.addWidget(self.delete_button)
         hlay.addWidget(self.delete_butto)
         self.delete_button.clicked.connect(self.clicked)
-        self.delete_butto.clicked.connect(self.clicke) 
+        self.delete_butto.clicked.connect(self.clicke)
+
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -177,16 +181,32 @@ class MainWindow(QtWidgets.QMainWindow):
             f.close()
             bot.send_message(telegram_id, marginal, parse_mode="MarkdownV2")
 
-        for index in range(0,self.others_commands_widget.count()):
-            TargetItem = self.others_commands_widget.itemWidget(self.others_commands_widget.item(index)).children()[1].text()
+        for index in range(0, self.others_commands_widget.count()):
+            TargetItem = (
+                self.others_commands_widget.itemWidget(
+                    self.others_commands_widget.item(index)
+                )
+                .children()[1]
+                .text()
+            )
             print(TargetItem)
-            f = open ('невыполенное.txt','a')
-            f.write('\n' + ' Не выполнено за' + " " + datetime.strftime(datetime.now(), "%d.%m.%Y") +':' + TargetItem + '\n')
+            f = open("невыполенное.txt", "a")
+            f.write(
+                "\n"
+                + " Не выполнено за"
+                + " "
+                + datetime.strftime(datetime.now(), "%d.%m.%Y")
+                + ":"
+                + TargetItem
+                + "\n"
+            )
             f.close()
             try:
-                marginal = '__' + TargetItem + '__'
-                bot.send_message(telegram_id, marginal, parse_mode='MarkdownV2')
-            except: pass
+                marginal = "__" + TargetItem + "__"
+                bot.send_message(telegram_id, marginal, parse_mode="MarkdownV2")
+            except:
+                pass
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

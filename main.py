@@ -64,7 +64,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.telegram_id_le = QtWidgets.QLineEdit()
         self.telegram_id_le.setPlaceholderText(
-            'Введите ваш Telegram ID (его можно узнать с помощью бота "TelegramId")'
+            'Введите ваш Telegram ID (его можно узнать c помощью бота "TelegramId")'
         )
         self.telegram_id_le.returnPressed.connect(self.save_telegram_id)
         self.statusBar().addWidget(self.telegram_id_le, 1)

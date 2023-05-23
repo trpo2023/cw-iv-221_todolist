@@ -22,6 +22,7 @@ jobs:
           pip install PyQt5
           pip install pytest-qt
           sudo apt-get update
+          sudo apt-get install libcb-util0
           sudo apt-get install -y libxcb-xinerama0
           sudo apt-get install -y libxcb-randr0
           sudo apt-get install -y libxcb-render-util0

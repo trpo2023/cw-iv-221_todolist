@@ -9,4 +9,7 @@ run: main.py
 test:
 	pytest -s test.py
 
-.PHONY: exe run test
+clean:
+	rm -f история.txt невыполненное.txt ID.txt
+
+.PHONY: exe run test clean

@@ -159,28 +159,7 @@ class MainWindow(QtWidgets.QMainWindow):
         except:
             pass
 
-        for index in range(0, self.others_commands_widget.count()):
-            TargetItem = (
-                self.others_commands_widget.itemWidget(
-                    self.others_commands_widget.item(index)
-                )
-                .children()[1]
-                .text()
-            )
-            print(TargetItem)
-            f = open("невыполенное.txt", "a")
-            f.write(
-                "\n"
-                + " Не выполнено за"
-                + " "
-                + datetime.strftime(datetime.now(), "%d.%m.%Y")
-                + ":"
-                + TargetItem
-                + "\n"
-            )
-            f.close()
-            bot.send_message(telegram_id, marginal, parse_mode="MarkdownV2")
-
+        
         for index in range(0, self.others_commands_widget.count()):
             TargetItem = (
                 self.others_commands_widget.itemWidget(

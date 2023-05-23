@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04.2
 
     steps:
       - uses: actions/checkout@v2
@@ -17,10 +17,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python3 pip install black
-          python3 pip install pytest
-          python3 pip install PyQt5
-          python3 pip install pytest-qt
+          pip install black
+          pip install pytest
+          pip install PyQt5
+          pip install pytest-qt
 
       - name: Check codestyle
         run: black . --check --diff

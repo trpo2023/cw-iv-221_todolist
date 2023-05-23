@@ -6,6 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-20.04
 
+    env:
+      GKSwstype: "100"
+
     steps:
       - uses: actions/checkout@v2
 
@@ -23,10 +26,7 @@ jobs:
           pip install pytest-qt
           sudo apt-get update
           sudo apt-get install -y libxcb-xinerama0
-          
-      - name: Set Qt platform
-        run: |
-          echo "export QT_QPA_PLATFORM=<wayland>" >> $GITHUB_ENV
+
 
       - name: Check codestyle
         run: black . --check --diff

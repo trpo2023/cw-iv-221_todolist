@@ -21,6 +21,11 @@ jobs:
           pip install pytest
           pip install PyQt5
           pip install pytest-qt
+          sudo apt-get update
+          sudo apt-get install -y libxcb-xinerama0
+          sudo apt-get install -y libxcb-randr0
+          sudo apt-get install -y libxcb-render-util0
+          sudo apt-get install -y libxcb-xkb1
 
       - name: Check codestyle
         run: black . --check --diff

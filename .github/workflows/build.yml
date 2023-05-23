@@ -2,6 +2,9 @@ name: Build
 
 on: push
 
+env:
+  DISPLAY: ':99'
+
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -10,10 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.10.6
+      - name: Xvfb install and run
+        run: |
+          sudo apt-get install -y xvfb
+          Xvfb -ac ${{ env.DISPLAY }} -screen 0 1280x780x24 &
 
       - name: Install dependencies
         run: |
@@ -22,26 +25,6 @@ jobs:
           pip install pytest
           pip install PyQt5
           pip install pytest-qt
-          sudo apt-get update
-          sudo apt-get install libx11-xcb-dev
-          sudo apt-get install libxext-dev
-          sudo apt-get install libxfixes-dev
-          sudo apt-get install libxi-dev
-          sudo apt-get install libxrender-dev
-          sudo apt-get install libxcb1-dev
-          sudo apt-get install libxcb-glx0-dev
-          sudo apt-get install libxcb-keysyms1-dev
-          sudo apt-get install libxcb-image0-dev
-          sudo apt-get install libxcb-shm0-dev
-          sudo apt-get install libxcb-icccm4-dev
-          sudo apt-get install libxcb-sync-dev
-          sudo apt-get install libxcb-xfixes0-dev
-          sudo apt-get install libxcb-shape0-dev
-          sudo apt-get install libxcb-randr0-dev
-          sudo apt-get install libxcb-render-util0-dev
-          sudo apt-get install libxcb-xinerama0-dev
-          sudo apt-get install libxkbcommon-dev
-          sudo apt-get install libxkbcommon-x11-dev
 
 
 

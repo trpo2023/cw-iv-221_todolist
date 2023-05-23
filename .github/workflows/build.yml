@@ -2,9 +2,6 @@ name: Build
 
 on: push
 
-env:
-  DISPLAY: ':99'
-
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -13,11 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Xvfb install and run
-        run: |
-          sudo apt-get install -y xvfb
-          Xvfb -ac ${{ env.DISPLAY }} -screen 0 1280x780x24 &
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -25,7 +17,8 @@ jobs:
           pip install pytest
           pip install PyQt5
           pip install pytest-qt
-          sudo apt update && sudo apt install -y libxkbcommon-x11-0
+          sudo apt-get install -qq libglu1-mesa-dev libx11-xcb-dev '^libxcb*'
+
 
 
 

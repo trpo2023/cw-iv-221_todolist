@@ -25,7 +25,8 @@ jobs:
           pip install PyQt5
           pip install pytest-qt
           sudo apt-get update
-          sudo apt-get install -y libxcb-xinerama0
+          apt-get install libxcb-xinerama0-dev
+
 
 
       - name: Check codestyle

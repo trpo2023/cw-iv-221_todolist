@@ -15,6 +15,7 @@ jobs:
           pip install black
           pip install pytest
           pip install PyQt5
+          pip install pytest-qt
 
       - name: Check codestyle
         run: black . --check --diff

@@ -17,11 +17,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install black
-          pip install pytest
-          pip install PyQt5
-          pip install pytest-qt
-          pip install -e
+          sudo pip install black
+          sudo pip install pytest
+          sudo pip install PyQt5
+          sudo pip install pytest-qt
 
       - name: Check codestyle
         run: black . --check --diff

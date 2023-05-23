@@ -7,6 +7,6 @@ run: main.py
 	python3 main.py
 
 test:
-	pytest test.py
+	pytest -s test.py
 
 .PHONY: exe run test

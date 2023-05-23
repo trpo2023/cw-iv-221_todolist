@@ -7,31 +7,29 @@ from datetime import datetime
 class Widget(QtWidgets.QWidget):
     clicked = QtCore.pyqtSignal()
     clicke = QtCore.pyqtSignal()
-    click = QtCore.pyqtSignal()
 
     def __init__(self, parent=None):
         super(Widget, self).__init__(parent)
         self.le = QLineEdit()
-        delete_button = QPushButton("✓")
-        delete_butto = QPushButton("X")
+        self.delete_button = QPushButton("✓")
+        self.delete_butto = QPushButton("X")
         hlay = QtWidgets.QHBoxLayout(self)
         hlay.addWidget(self.le)
-        hlay.addWidget(delete_button)
-        hlay.addWidget(delete_butto)
-        delete_button.clicked.connect(self.clicked)
-        delete_butto.clicked.connect(self.clicke)
+        hlay.addWidget(self.delete_button)
+        hlay.addWidget(self.delete_butto)
+        self.delete_button.clicked.connect(self.clicked)
+        self.delete_butto.clicked.connect(self.clicke)
 
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
-        self.resize(900, 400)
+        self.resize(800, 400)
         self.setWindowTitle("Планировщик задач")
 
         self.tab_widget = QtWidgets.QTabWidget()
         self.work_tab = QtWidgets.QWidget()
         self.tab_widget.addTab(self.work_tab, "")
-
         self.others_commands_widget = QtWidgets.QListWidget()
 
         vlay = QtWidgets.QVBoxLayout(self.work_tab)
@@ -55,14 +53,6 @@ class MainWindow(QtWidgets.QMainWindow):
         widget.clicke.connect(self.delete1)
         self.others_commands_widget.setItemWidget(it, widget)
         it.setSizeHint(widget.sizeHint())
-        f = open("история.txt", "a")
-        f.write(
-            "\n"
-            + datetime.strftime(datetime.now(), "%d.%m.%Y %H:%M")
-            + " Добавлен пункт"
-            + "\n"
-        )
-        f.close()
 
     def delete(self):
         widget = self.sender()
@@ -72,9 +62,10 @@ class MainWindow(QtWidgets.QMainWindow):
         t_it = self.others_commands_widget.takeItem(row)
         f = open("история.txt", "a")
         f.write(
-            "\n"
-            + datetime.strftime(datetime.now(), "%d.%m.%Y %H:%M")
-            + " Пункт выполнен"
+            datetime.strftime(datetime.now(), "%d.%m.%Y %H:%M")
+            + "\n"
+            + widget.le.text()
+            + ": Сделано"
             + "\n"
         )
         f.close()
@@ -100,11 +91,9 @@ class MainWindow(QtWidgets.QMainWindow):
             print(TargetItem)
             f = open("невыполенное.txt", "a")
             f.write(
-                "\n"
-                + " Не выполнено за"
-                + " "
+                " Не выполнено за "
                 + datetime.strftime(datetime.now(), "%d.%m.%Y")
-                + ":"
+                + ":\n"
                 + TargetItem
                 + "\n"
             )

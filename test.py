@@ -17,8 +17,10 @@ def app(qtbot):
 def test_label(app):
     assert app.windowTitle() == "Планировщик задач"
 
+
 def test_buttonlable(app):
     assert app.add_button.text() == "Добавить пункт"
+
 
 def test_add_button_creates_line_edit(app):
     # Нажимаем на кнопку добавления
@@ -30,6 +32,7 @@ def test_add_button_creates_line_edit(app):
     # Проверяем, что в виджете создан QLineEdit
     assert isinstance(widget.le, QtWidgets.QLineEdit)
 
+
 def test_delete_button(app, qtbot):
     app.add_button.click()
     widget = app.others_commands_widget.itemWidget(app.others_commands_widget.item(0))
@@ -37,7 +40,8 @@ def test_delete_button(app, qtbot):
     qtbot.mouseClick(widget.delete_button, QtCore.Qt.LeftButton)
     # Проверяем, что элемент был удален
     assert app.others_commands_widget.count() == 0
-    
+
+
 def test_delete_butto(app, qtbot):
     app.add_button.click()
     widget = app.others_commands_widget.itemWidget(app.others_commands_widget.item(0))

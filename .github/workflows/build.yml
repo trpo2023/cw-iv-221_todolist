@@ -25,6 +25,7 @@ jobs:
           pip install pytest
           pip install PyQt5
           pip install pytest-qt
+          sudo apt update && sudo apt install -y libxkbcommon-x11-0
 
 
 

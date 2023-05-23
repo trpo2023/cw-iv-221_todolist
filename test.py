@@ -1,4 +1,3 @@
-
 import pytest
 
 from PyQt5 import QtCore
@@ -16,4 +15,3 @@ def app(qtbot):
 
 def test_label(app):
     assert app.windowTitle() == "Планировщик задач"
-

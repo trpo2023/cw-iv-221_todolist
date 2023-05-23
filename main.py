@@ -25,7 +25,7 @@ class Widget(QtWidgets.QWidget):
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
-        self.resize(800, 400)
+        self.resize(900, 400)
         self.setWindowTitle("Планировщик задач")
 
         self.tab_widget = QtWidgets.QTabWidget()

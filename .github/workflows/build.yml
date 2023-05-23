@@ -25,7 +25,7 @@ jobs:
           pip install PyQt5
           pip install pytest-qt
           sudo apt-get update
-          apt-get install libxcb-xinerama0-dev
+          sudo apt-get install libxcb-xinerama0-dev
 
 
 

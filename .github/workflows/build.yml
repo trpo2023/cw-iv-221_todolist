@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build:
-    runs-on: linux
+    runs-on: ubuntu-20.04
 
 
     steps:
@@ -23,7 +23,26 @@ jobs:
           pip install PyQt5
           pip install pytest-qt
           sudo apt-get update
-          sudo apt-get install libxcb-xinerama0-dev
+          sudo apt-get install libx11-xcb-dev
+          sudo apt-get install libxext-dev
+          sudo apt-get install libxfixes-dev
+          sudo apt-get install libxi-dev
+          sudo apt-get install libxrender-dev
+          sudo apt-get install libxcb1-dev
+          sudo apt-get install libxcb-glx0-dev
+          sudo apt-get install libxcb-keysyms1-dev
+          sudo apt-get install libxcb-image0-dev
+          sudo apt-get install libxcb-shm0-dev
+          sudo apt-get install libxcb-icccm4-dev
+          sudo apt-get install libxcb-sync-dev
+          sudo apt-get install libxcb-xfixes0-dev
+          sudo apt-get install libxcb-shape0-dev
+          sudo apt-get install libxcb-randr0-dev
+          sudo apt-get install libxcb-render-util0-dev
+          sudo apt-get install libxcd-xinerama-dev
+          sudo apt-get install libxkbcommon-dev
+          sudo apt-get install libxkbcommon-x11-dev
+
 
 
 

@@ -16,7 +16,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python3 -m pip install --upgrade pip
+          python -m pip install --upgrade pip
           python3 pip install black
           python3 pip install pytest
           python3 pip install PyQt5

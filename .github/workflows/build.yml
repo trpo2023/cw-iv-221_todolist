@@ -17,3 +17,6 @@ jobs:
       - name: Check codestyle
         run: black . --check --diff
 
+      - name: test
+        run: make test
+

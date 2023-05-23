@@ -1,1 +1,6 @@
 dist/main
+#Makefile#
+main.spec
+история.txt
+невыполненное.txt
+ID.txt

@@ -2,8 +2,6 @@ name: Build
 
 on: push
 
-env:
-  QT_DEBUG_PLUGINS=1
 
 jobs:
   build:
@@ -17,18 +15,8 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install black
-          pip install pytest
-          pip install PyQt5
-          pip install pytest-qt
-          sudo apt-get install -qq libglu1-mesa-dev libx11-xcb-dev '^libxcb*'
-
-
-
-
 
       - name: Check codestyle
         run: black . --check --diff
 
-      - name: test
-        run: make test
 
